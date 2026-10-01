@@ -1,0 +1,9 @@
+{{ define "main" }}
+<div class="wrap">
+  <section class="intro">
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}<p>{{ . }}</p>{{ end }}
+  </section>
+  {{ partial "paper-list.html" .RegularPages }}
+</div>
+{{ end }}

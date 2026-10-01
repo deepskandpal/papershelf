@@ -1,0 +1,31 @@
+baseURL = "https://papershelf.dev/"
+locale = "en-US"
+title = "Papershelf"
+enableRobotsTXT = true
+disableKinds = ["taxonomy", "term"]
+
+[params]
+  author = "Deepanshu Kandpal"
+  # One line under the wordmark and in search results. Rewrite in your own words.
+  description = "Research papers, read closely and explained, with the paper open alongside."
+  hub = "https://404engineernotfound.com/"
+  github = "https://github.com/deepskandpal"
+
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = false
+  # $…$ and $$…$$ (Obsidian's math syntax) are rendered to KaTeX at build time.
+  [markup.goldmark.extensions.passthrough]
+    enable = true
+    [markup.goldmark.extensions.passthrough.delimiters]
+      block = [['$$', '$$'], ['\[', '\]']]
+      inline = [['$', '$'], ['\(', '\)']]
+  [markup.highlight]
+    noClasses = false
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 3
+
+[outputs]
+  home = ["html", "rss"]
+  section = ["html", "rss"]

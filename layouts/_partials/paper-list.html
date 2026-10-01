@@ -1,0 +1,24 @@
+{{- $pages := . }}
+{{- if $pages }}
+<ol class="paper-list" reversed>
+  {{- range $pages.ByDate.Reverse }}
+  {{- $p := .Params.paper }}
+  <li class="paper-item">
+    <a href="{{ .RelPermalink }}">
+      <span class="num">{{ with .Params.number }}{{ printf "%02d" . }}{{ end }}</span>
+      <span class="body">
+        <h2>{{ .Title }}</h2>
+        <p class="by">
+          {{- with $p.authors }}{{ index . 0 }}{{ if gt (len .) 1 }} et al.{{ end }}{{ end }}
+          {{- with $p.year }} · {{ . }}{{ end }}
+          {{- with $p.venue }} · {{ . }}{{ end }}
+        </p>
+        <p class="when">{{ .Date.Format "2 January 2006" }}{{ if .Draft }} · <em>draft</em>{{ end }}</p>
+      </span>
+    </a>
+  </li>
+  {{- end }}
+</ol>
+{{- else }}
+<p class="empty">The first paper is being written.</p>
+{{- end }}

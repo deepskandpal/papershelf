@@ -1,0 +1,9 @@
+{{- /* Page reference: {{< p 4 >}} or {{< p 4 "Figure 2" >}} — opens the paper's PDF at that page in a new tab. */ -}}
+{{- $n := .Get 0 -}}
+{{- $label := .Get 1 | default (printf "p. %v" $n) -}}
+{{- with .Page.Params.paper.pdf -}}
+<a class="pref" href="{{ . }}#page={{ $n }}" target="_blank" rel="noopener" title="Open the paper at page {{ $n }}">{{ $label }}</a>
+{{- else -}}
+<span class="pref">{{ $label }}</span>
+{{- end -}}
+{{- /**/ -}}

@@ -1,0 +1,9 @@
+{{ define "main" }}
+<div class="wrap">
+  <section class="intro">
+    <h1>{{ site.Title }}</h1>
+    <p>{{ site.Params.description }}</p>
+  </section>
+  {{ partial "paper-list.html" (where site.RegularPages "Section" "papers") }}
+</div>
+{{ end }}

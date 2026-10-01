@@ -1,0 +1,44 @@
+{{ define "main" }}
+{{- $p := .Params.paper }}
+<article class="paper-page">
+  <header class="paper-head">
+    <p class="kicker">
+      {{- with .Params.number }}Paper {{ printf "%02d" . }} · {{ end }}{{ .Date.Format "2 January 2006" }}
+    </p>
+    <h1>{{ .Title }}</h1>
+  </header>
+
+  <aside class="paper-card" aria-label="The paper">
+    <p class="card-label">The paper</p>
+    <p class="card-title">{{ .Title }}</p>
+    {{- with $p.authors }}
+    <p class="card-authors">{{ index . 0 }}{{ if gt (len .) 1 }} et al.{{ end }}{{ if gt (len .) 2 }} <span>({{ len . }} authors)</span>{{ end }}</p>
+    {{- end }}
+    <p class="card-meta">
+      {{- with $p.org }}<span>{{ . }}</span>{{ end }}
+      {{- with $p.year }}<span>{{ . }}</span>{{ end }}
+      {{- with $p.venue }}<span>{{ . }}</span>{{ end }}
+    </p>
+    <div class="card-links">
+      {{- with $p.url }}<a class="btn primary" href="{{ . }}" target="_blank" rel="noopener">Read on {{ if $p.arxiv }}arXiv{{ else }}the source{{ end }} <span aria-hidden="true">↗</span></a>{{ end }}
+      {{- with $p.pdf }}<a class="btn" href="{{ . }}" target="_blank" rel="noopener">PDF <span aria-hidden="true">↗</span></a>{{ end }}
+    </div>
+    {{- with $p.license }}<p class="card-license">{{ with $p.arxiv }}arXiv:{{ . }} · {{ end }}{{ . }}</p>{{ end }}
+  </aside>
+
+  <div class="paper-body">
+    {{- with .Params.video }}
+    <div class="video">
+      <iframe src="https://www.youtube-nocookie.com/embed/{{ . }}" title="Video: {{ $.Title }}" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>
+    </div>
+    {{- end }}
+    <div class="prose">
+      {{- with .Content }}
+        {{ . }}
+      {{- else }}
+        <p class="empty">Notes in progress.</p>
+      {{- end }}
+    </div>
+  </div>
+</article>
+{{ end }}

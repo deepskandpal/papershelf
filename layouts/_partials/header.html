@@ -1,0 +1,13 @@
+<header class="site-header">
+  <div class="inner">
+    <a class="brand" href="{{ "/" | relURL }}" aria-label="{{ site.Title }} home">
+      <svg viewBox="0 0 32 32" width="22" height="22" aria-hidden="true"><rect width="32" height="32" rx="7" fill="var(--accent)"/><rect x="7" y="8" width="4" height="16" rx="1" fill="var(--accent-ink)"/><rect x="13" y="6" width="4" height="18" rx="1" fill="var(--accent-ink)"/><rect x="19.5" y="9" width="4" height="15" rx="1" fill="var(--accent-ink)" transform="rotate(-14 21.5 16.5)"/><rect x="6" y="25" width="20" height="1.6" rx=".8" fill="var(--accent-ink)"/></svg>
+      <span>{{ site.Title }}</span>
+    </a>
+    <nav aria-label="Main">
+      <a href="{{ "/" | relURL }}"{{ if .IsHome }} aria-current="page"{{ end }}>Papers</a>
+      <a href="{{ "/index.xml" | relURL }}">RSS</a>
+    </nav>
+    <a class="hub-link" href="{{ site.Params.hub }}">{{ site.Params.author }} <span aria-hidden="true">↗</span></a>
+  </div>
+</header>

@@ -1,0 +1,9 @@
+{{- /* {{< video youtube="ID" >}} or {{< video src="clip.mp4" >}} */ -}}
+<div class="video">
+{{- with .Get "youtube" }}
+  <iframe src="https://www.youtube-nocookie.com/embed/{{ . }}" title="Video" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>
+{{- else }}
+  {{- $src := .Get "src" }}{{ with .Page.Resources.Get $src }}{{ $src = .RelPermalink }}{{ end }}
+  <video src="{{ $src }}" controls preload="metadata" playsinline></video>
+{{- end }}
+</div>

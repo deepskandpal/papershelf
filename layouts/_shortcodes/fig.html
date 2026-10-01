@@ -1,0 +1,9 @@
+{{- /* {{< fig src="diagram.svg" caption="…" page="5" >}} — an image from the page bundle, with an optional link to the page it explains. */ -}}
+{{- $src := .Get "src" -}}
+{{- with .Page.Resources.Get $src }}{{ $src = .RelPermalink }}{{ end -}}
+<figure class="fig">
+  <img src="{{ $src }}" alt="{{ .Get "alt" | default (.Get "caption") }}" loading="lazy">
+  {{- if or (.Get "caption") (.Get "page") }}
+  <figcaption>{{ with .Get "caption" }}{{ . | markdownify }}{{ end }}{{ with .Get "page" }} {{ $.Page.RenderString (printf "{{< p %s >}}" .) }}{{ end }}</figcaption>
+  {{- end }}
+</figure>

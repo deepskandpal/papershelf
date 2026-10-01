@@ -1,0 +1,9 @@
+<footer class="site-footer">
+  <div class="inner">
+    <span>{{ site.Title }} is part of <a href="{{ site.Params.hub }}">{{ site.Params.hub | replaceRE `^https?://|/$` "" }}</a>, by {{ site.Params.author }}.</span>
+    <span class="footer-links">
+      <a href="{{ site.Params.github }}">GitHub</a>
+      <a href="{{ "/index.xml" | relURL }}">RSS</a>
+    </span>
+  </div>
+</footer>
