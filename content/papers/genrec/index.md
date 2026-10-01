@@ -1,7 +1,7 @@
 ---
 title: "GenRec: An LLM-Backed Recommendation Ranker at Netflix"
 date: 2026-10-01
-number: 2
+number: 3
 draft: true
 paper:
   authors: ["Ying Li", "Shradha Sehgal", "Arjun Rao", "Rein Houthooft", "Yaochen Zhu", "Ashish Rastogi"]
